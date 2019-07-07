@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { createAppContainer, createSwitchNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
-// import Icon from 'react-native-vector-icons'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Screens
 import Loading from './src/screens/Loading';
@@ -23,30 +23,34 @@ const AppDrawerNavigator = createDrawerNavigator({
   },
   Login: {
     screen: Login,
-  }
+  },
 },
   {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
       return {
-        headerTitle: routeName
+        headerTitle: routeName,
       }
-    }
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (
-          <Icon name="md-menu" size={30} />
-        )
-      };
     }
   }
 )
 
 const StackNavigator = createStackNavigator({
   Dashboard: AppDrawerNavigator
-})
+},
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: <Icon
+          style={{ paddingLeft: 10 }}
+          onPress={() => navigation.openDrawer()}
+          name='bars'
+          size={30}
+        />
+      }
+    }
+  }
+)
 
 const AppSwitchNavigator = createSwitchNavigator({
   Loading: {
