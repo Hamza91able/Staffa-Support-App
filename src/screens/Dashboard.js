@@ -14,12 +14,16 @@ export default class Main extends React.Component {
     //     });
     // }
 
+    state = {
+        employeeStatus: 'Available',
+    }
+
     renderEmployeeInfo = () => {
         return (
             <Card>
-                <CardItem style={{backgroundColor: '#FFFF66'}}>
+                <CardItem style={{ backgroundColor: '#FFFF66' }}>
                     <Body style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{backgroundColor: '#FFFF66'}}>
+                        <Text style={{ backgroundColor: '#FFFF66' }}>
                             Julie Higgins Staff No: HCP120021
                         </Text>
                     </Body>
@@ -39,8 +43,16 @@ export default class Main extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1, marginTop: 20 }}>
                                 <Text style={{ fontSize: 20 }}>Status</Text>
                                 <Body>
-                                    <Button style={styles.statusButton} rounded success>
-                                        <Text style={{ fontSize: 20 }}>Available</Text>
+                                    <Button onPress={() => { this.state.employeeStatus === 'Available' ? this.setState({ employeeStatus: 'Unavailable' }) : this.setState({ employeeStatus: 'Available' }) }} rounded success style={{
+                                        justifyContent: 'center',
+                                        width: 300,
+                                        height: 70,
+                                        borderColor: 'black',
+                                        borderWidth: 2,
+                                        marginTop: 5,
+                                        backgroundColor: this.state.employeeStatus === 'Available' ? 'limegreen' : 'royalblue'
+                                    }}>
+                                        <Text style={{ fontSize: 20 }}>{this.state.employeeStatus}</Text>
                                     </Button>
                                 </Body>
                             </View>
@@ -69,23 +81,19 @@ export default class Main extends React.Component {
                         </Col>
                         <Col size={50}>
                             <View style={{ justifyContent: 'center', flex: 1 }}>
-                                <Text>Vacant Shift</Text>
+                                <Text style={{ fontSize: 20 }}>Vacant Shift</Text>
                             </View>
 
                         </Col>
                     </Row>
                     <Row size={15}>
                         <Col>
-                            <List style={{ justifyContent: 'center', marginLeft: 30, flex: 1 }}>
+                            <List style={{ marginLeft: 30, flex: 1 }}>
                                 <ListItem icon>
-                                    <Left>
-                                        <Button style={{ backgroundColor: "#007AFF" }}>
-                                            <Icon active name="text" />
-                                        </Button>
-                                    </Left>
-                                    <Body>
+                                    <Button style={{ backgroundColor: "#007AFF" }}>
+                                        <Icon active name="text" />
                                         <Text>Message Centre</Text>
-                                    </Body>
+                                    </Button>
                                 </ListItem>
                             </List>
                         </Col>
@@ -94,7 +102,7 @@ export default class Main extends React.Component {
                     <Row size={35}>
                         <View style={{ marginLeft: 10 }}>
                             <Text style={{ fontSize: 20 }}>Notifications</Text>
-                            <Textarea style={{ width: 380, backgroundColor:'white' }} disabled={true} editable={false} rowSpan={5} bordered placeholder="Textarea" value={"Moving & Handling Cert needs renewing. \nFirst Aid Cert needs renewing. \nNew PI prices just for you."} />
+                            <Textarea style={{ width: 380, backgroundColor: 'white' }} disabled={true} editable={false} rowSpan={5} bordered placeholder="Textarea" value={"Moving & Handling Cert needs renewing. \nFirst Aid Cert needs renewing. \nNew PI prices just for you."} />
                         </View>
                     </Row>
                 </Grid>

@@ -17,6 +17,9 @@ import Login from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
 import SignUp from './src/screens/SignUp';
 
+// Components
+import drawerContentComponent from './src/components/DrawerContentComponents';
+
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: Dashboard,
@@ -31,8 +34,13 @@ const AppDrawerNavigator = createDrawerNavigator({
       return {
         headerTitle: routeName,
       }
-    }
-  }
+    },
+    initialRouteName: 'Dashboard',
+    contentComponent: drawerContentComponent,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
+  },
 )
 
 const StackNavigator = createStackNavigator({
@@ -46,7 +54,10 @@ const StackNavigator = createStackNavigator({
           onPress={() => navigation.openDrawer()}
           name='bars'
           size={30}
-        />
+        />,
+        headerStyle: {
+          backgroundColor: '#FF8C00'
+        },
       }
     }
   }
