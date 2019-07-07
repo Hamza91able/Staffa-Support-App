@@ -5,6 +5,14 @@ import firebase from 'react-native-firebase';
 
 export default class Main extends React.Component {
 
+    // componentDidMount() {
+    //     firebase.auth().signOut().then(function () {
+    //         // Sign-out successful.
+    //     }).catch(function (error) {
+    //         // An error happened.
+    //     });
+    // }
+
     render() {
 
         return (
