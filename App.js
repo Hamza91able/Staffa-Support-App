@@ -16,22 +16,56 @@ import Loading from './src/screens/Loading';
 import Login from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
 import SignUp from './src/screens/SignUp';
+import ViewShifts from './src/screens/ViewShifts';
+import ShiftDetails from './src/screens/ShiftDetails';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
+
+let mainHeaderBool = undefined
+
+const ShiftsStack = createStackNavigator({
+  'View Shifts': {
+    screen: ViewShifts,
+    navigationOptions: ({ navigation }) => {
+      return {
+        header: null,
+        headerTitle: 'View Shifts',
+        headerLeft: <Icon
+          style={{ paddingLeft: 10 }}
+          onPress={() => navigation.openDrawer()}
+          name='bars'
+          size={30}
+        />,
+        headerStyle: {
+          backgroundColor: '#FF8C00'
+        },
+      }
+    }
+  },
+  'Shift Details': {
+    screen: ShiftDetails,
+    navigationOptions: ({ navigation }) => {
+      return {
+        header: null,
+      }
+    }
+  }
+})
 
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: Dashboard,
   },
-  Login: {
-    screen: Login,
+  'View Shifts': {
+    screen: ShiftsStack,
   },
 },
   {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
       return {
+        header: mainHeaderBool,
         headerTitle: routeName,
       }
     },

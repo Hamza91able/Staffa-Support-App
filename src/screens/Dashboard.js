@@ -18,6 +18,36 @@ export default class Main extends React.Component {
         employeeStatus: 'Available',
     }
 
+    componentWillMount() {
+        const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
+        alert(userRef)
+        userRef.on('value', snap => {
+            alert("TEST")
+            // this.setState({
+            //     employeeStatus: snap.val('User Status'),
+            // })
+        })
+    }
+
+    changeUserStatus = () => {
+        const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
+
+        this.state.employeeStatus === 'Available' ?
+            this.setState({
+                employeeStatus: 'Unavailable'
+            }, () => {
+                userRef.update({
+                    'User Status': this.state.employeeStatus,
+                })
+            }) : this.setState({
+                employeeStatus: 'Available'
+            }, () => {
+                userRef.update({
+                    'User Status': this.state.employeeStatus,
+                })
+            })
+    }
+
     renderEmployeeInfo = () => {
         return (
             <Card>
@@ -43,7 +73,7 @@ export default class Main extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1, marginTop: 20 }}>
                                 <Text style={{ fontSize: 20 }}>Status</Text>
                                 <Body>
-                                    <Button onPress={() => { this.state.employeeStatus === 'Available' ? this.setState({ employeeStatus: 'Unavailable' }) : this.setState({ employeeStatus: 'Available' }) }} rounded success style={{
+                                    <Button onPress={() => { this.changeUserStatus() }} rounded success style={{
                                         justifyContent: 'center',
                                         width: 300,
                                         height: 70,
@@ -100,9 +130,9 @@ export default class Main extends React.Component {
 
                     </Row>
                     <Row size={35}>
-                        <View style={{ marginLeft: 10 }}>
+                        <View style={{ marginLeft: 10, alignSelf: 'stretch', width: '95%' }}>
                             <Text style={{ fontSize: 20 }}>Notifications</Text>
-                            <Textarea style={{ width: 380, backgroundColor: 'white' }} disabled={true} editable={false} rowSpan={5} bordered placeholder="Textarea" value={"Moving & Handling Cert needs renewing. \nFirst Aid Cert needs renewing. \nNew PI prices just for you."} />
+                            <Textarea style={{ alignSelf: 'stretch', backgroundColor: 'white' }} disabled={true} editable={false} rowSpan={5} bordered placeholder="Textarea" value={"Moving & Handling Cert needs renewing. \nFirst Aid Cert needs renewing. \nNew PI prices just for you."} />
                         </View>
                     </Row>
                 </Grid>

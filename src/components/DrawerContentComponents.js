@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 import { DrawerItems } from 'react-navigation';
 
-export default class ListExample extends Component {
+export default class DrawerContentComponent extends Component {
 
     render() {
         return (
