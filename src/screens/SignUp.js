@@ -6,25 +6,40 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 export default class SignUp extends React.Component {
     state = {
-        email: '',
+        username: '',
         password: '',
-        errorMessage: null,
+        confirmPassword: '',
+        firstName: '',
+        surname: '',
         chosenDate: new Date(),
-        selected2: undefined,
+        nic: '',
+        email: '',
+        mobileNo: '',
+        regNumber: '',
+        gender: undefined,
+        holidayPay: undefined,
+        errorMessage: null,
     }
 
     setDate = newDate => {
         this.setState({ chosenDate: newDate });
     }
 
-    onValueChange2(value) {
+    onGenderChange(value) {
         this.setState({
-            selected2: value
+            gender: value
+        });
+    }
+
+    holdayPayChange(value) {
+        this.setState({
+            holidayPay: value
         });
     }
 
     handleSignUp = () => {
-        const { email, password } = this.state
+        const { username, password, firstName, surname, chosenDate, nic, email, mobileNo, regNumber, gender, holidayPay, errorMessage } = this.state;
+
         firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
@@ -32,6 +47,15 @@ export default class SignUp extends React.Component {
                 const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
                 userRef.set({
                     uid: firebase.auth().currentUser.uid,
+                    username: username,
+                    firstName: firstName,
+                    surname: surname,
+                    chosenDate: chosenDate,
+                    nic: nic,
+                    mobileNo: mobileNo,
+                    regNumber: regNumber,
+                    gender: gender,
+                    holidayPay: holidayPay,
                 })
             })
             .then(user => this.props.navigation.navigate('Main'))
@@ -46,24 +70,39 @@ export default class SignUp extends React.Component {
                     <Form>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Username</Label>
-                            <Input />
+                            <Input
+                                onChangeText={username => this.setState({ username })}
+                                value={this.state.username}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Password</Label>
-                            <Input />
+                            <Input
+                                onChangeText={password => this.setState({ password })}
+                                value={this.state.password}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Confirm Password</Label>
-                            <Input />
+                            <Input
+                                onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                                value={this.state.confirmPassword}
+                            />
                         </Item>
 
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>First Name</Label>
-                            <Input />
+                            <Input
+                                onChangeText={firstName => this.setState({ firstName })}
+                                value={this.state.firstName}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Surname</Label>
-                            <Input />
+                            <Input
+                                onChangeText={surname => this.setState({ surname })}
+                                value={this.state.surname}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>DOB</Label>
@@ -85,19 +124,31 @@ export default class SignUp extends React.Component {
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>National Insurance Number</Label>
-                            <Input />
+                            <Input
+                                onChangeText={nic => this.setState({ nic })}
+                                value={this.state.nic}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Email address</Label>
-                            <Input />
+                            <Input
+                                onChangeText={email => this.setState({ email })}
+                                value={this.state.email}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Mobile Number</Label>
-                            <Input />
+                            <Input
+                                onChangeText={mobileNo => this.setState({ mobileNo })}
+                                value={this.state.mobileNo}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Registration Number</Label>
-                            <Input />
+                            <Input
+                                onChangeText={regNumber => this.setState({ regNumber })}
+                                value={this.state.regNumber}
+                            />
                         </Item>
                         <Item style={{ width: '100%' }} inlineLabel>
                             <Label>Gender</Label>
@@ -105,11 +156,9 @@ export default class SignUp extends React.Component {
                                 mode="dropdown"
                                 iosIcon={<Icon name="arrow-down" />}
                                 style={{ width: undefined }}
-                                placeholder="Select your SIM"
-                                placeholderStyle={{ color: "#bfc6ea" }}
                                 placeholderIconColor="#007aff"
-                                selectedValue={this.state.selected2}
-                                onValueChange={this.onValueChange2.bind(this)}
+                                selectedValue={this.state.gender}
+                                onValueChange={this.onGenderChange.bind(this)}
                             >
                                 <Picker.Item label="Male" value="key0" />
                                 <Picker.Item label="Female" value="key1" />
@@ -121,14 +170,11 @@ export default class SignUp extends React.Component {
                                 mode="dropdown"
                                 iosIcon={<Icon name="arrow-down" />}
                                 style={{ width: undefined }}
-                                placeholder="Select your SIM"
-                                placeholderStyle={{ color: "#bfc6ea" }}
-                                placeholderIconColor="#007aff"
-                                selectedValue={this.state.selected2}
-                                onValueChange={this.onValueChange2.bind(this)}
+                                selectedValue={this.state.holidayPay}
+                                onValueChange={this.holdayPayChange.bind(this)}
                             >
-                                <Picker.Item label="Yes" value="key2" />
-                                <Picker.Item label="No" value="key3" />
+                                <Picker.Item label="Yes" value="key0" />
+                                <Picker.Item label="No" value="key1" />
                             </Picker>
                         </Item>
                     </Form>
@@ -149,8 +195,8 @@ export default class SignUp extends React.Component {
             //         placeholder="Email"
             //         autoCapitalize="none"
             //         style={styles.textInput}
-            //         onChangeText={email => this.setState({ email })}
-            //         value={this.state.email}
+            // onChangeText={email => this.setState({ email })}
+            // value={this.state.email}
             //     />
             //     <TextInput
             //         secureTextEntry
@@ -173,7 +219,7 @@ export default class SignUp extends React.Component {
                     </Body>
                 </Header>
                 {this.renderSignup()}
-                <Button style=
+                <Button onPress={this.handleSignUp} style=
                     {{
                         width: '100%',
                         height: '8%',

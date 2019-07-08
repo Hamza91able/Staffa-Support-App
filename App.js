@@ -16,6 +16,7 @@ import Loading from './src/screens/Loading';
 import Login from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
 import SignUp from './src/screens/SignUp';
+import InitialSignup from './src/screens/InitialSignup';
 import ViewShifts from './src/screens/ViewShifts';
 import ShiftDetails from './src/screens/ShiftDetails';
 
@@ -101,11 +102,11 @@ const AppSwitchNavigator = createSwitchNavigator({
   Loading: {
     screen: Loading,
   },
-  SignUp: {
-    screen: SignUp,
-  },
   Login: {
     screen: Login,
+  },
+  SignUp: {
+    screen: InitialSignup,
   },
   Dashboard: {
     screen: StackNavigator,
