@@ -6,27 +6,26 @@ import firebase from 'react-native-firebase';
 
 export default class Main extends React.Component {
 
-    componentDidMount() {
-        firebase.auth().signOut().then(function () {
-            // Sign-out successful.
-        }).catch(function (error) {
-            // An error happened.
-        });
-    }
+    // componentDidMount() {
+    //     firebase.auth().signOut().then(function () {
+    //         // Sign-out successful.
+    //     }).catch(function (error) {
+    //         // An error happened.
+    //     });
+    // }
 
     state = {
         employeeStatus: 'Available',
     }
 
     componentWillMount() {
-        const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
-        alert(userRef)
-        userRef.on('value', snap => {
-            alert("TEST")
-            // this.setState({
-            //     employeeStatus: snap.val('User Status'),
-            // })
-        })
+        // const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
+
+        // userRef.on('value', snap => {
+        //     // this.setState({
+        //     //     employeeStatus: snap.val('User Status'),
+        //     // })
+        // })
     }
 
     changeUserStatus = () => {

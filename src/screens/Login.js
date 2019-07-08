@@ -3,14 +3,29 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'react-native-firebase';
 
 export default class Login extends React.Component {
-    state = { email: '', password: '', errorMessage: null }
+    state = {
+        email: '',
+        password: '',
+        errorMessage: null,
+        editable: true,
+    }
 
     handleLogin = () => {
         const { email, password } = this.state
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(() => this.props.navigation.navigate('Dashboard'))
+            .then(() => {
+                const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
+                userRef.once('value', snap => {
+                    if (snap.val("profileSetup" === false)) {
+                        this.props.navigation.navigate('SignUpForm')
+                    } else {
+                        this.props.navigation.navigate('Dashboard')
+                    }
+                })
+
+            })
             .catch(error => this.setState({ errorMessage: error.message }))
     }
 

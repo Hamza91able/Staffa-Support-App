@@ -22,6 +22,7 @@ import ShiftDetails from './src/screens/ShiftDetails';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
+import firebase from 'react-native-firebase';
 
 let mainHeaderBool = undefined
 
@@ -53,6 +54,7 @@ const ShiftsStack = createStackNavigator({
     }
   }
 })
+
 
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
@@ -111,7 +113,9 @@ const AppSwitchNavigator = createSwitchNavigator({
   Dashboard: {
     screen: StackNavigator,
   },
-
+  SignUpForm: {
+    screen: SignUp
+  }
 })
 
 

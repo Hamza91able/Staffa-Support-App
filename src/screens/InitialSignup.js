@@ -1,30 +1,60 @@
 import React from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 import firebase from 'react-native-firebase';
-import { View, Container, Header, Content, Card, CardItem, Body, Text, ListItem, Radio, Left, Right, Button } from 'native-base';
+import { View, Container, Header, Content, Card, CardItem, Body, Text, ListItem, Radio, Left, Right, Button, Root, Toast } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 export default class InitialSignup extends React.Component {
     state = {
         username: '',
         password: '',
+        confirmPassword: '',
         errorMessage: null,
+        editable: true,
     }
 
     handleSignUp = () => {
-        const { password, email } = this.state;
+        const { password, email, confirmPassword } = this.state;
 
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
-                userRef.set({
-                    uid: firebase.auth().currentUser.uid
-                })
+
+        if (confirmPassword === password) {
+            this.setState({
+                editable: false,
             })
-            .then(user => this.props.navigation.navigate('Main'))
-            .catch(error => this.setState({ errorMessage: error.message }))
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
+                    userRef.set({
+                        uid: firebase.auth().currentUser.uid,
+                        profileSetup: false,
+                    })
+                })
+                .then(Toast.show({
+                    text: "Register Succesfull. Redirecting",
+                    buttonText: "Okay",
+                    type: "warning"
+                }))
+                .then(user => {
+                    setTimeout(() => {
+                        this.props.navigation.navigate('Login')
+                    }, 1000);
+                })
+                .catch(error => Toast.show({
+                    text: error,
+                    buttonText: "Okay",
+                    type: "danger"
+                }))
+        } else {
+            Toast.show({
+                text: "Password doesn't match",
+                buttonText: "Okay",
+                type: "danger"
+            })
+        }
+
+
     }
 
     renderCard = () => {
@@ -48,7 +78,7 @@ export default class InitialSignup extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Root>
                 <Grid>
                     <Row size={30}>
                         {this.renderCard()}
@@ -65,6 +95,7 @@ export default class InitialSignup extends React.Component {
                                 style={styles.textInput}
                                 onChangeText={email => this.setState({ email })}
                                 value={this.state.email}
+                                editable={this.state.editable}
                             />
                             <TextInput
                                 secureTextEntry
@@ -73,14 +104,16 @@ export default class InitialSignup extends React.Component {
                                 style={styles.textInput}
                                 onChangeText={password => this.setState({ password })}
                                 value={this.state.password}
+                                editable={this.state.editable}
                             />
                             <TextInput
                                 secureTextEntry
-                                placeholder="Password"
+                                placeholder="Confirm Password"
                                 autoCapitalize="none"
                                 style={styles.textInput}
-                                onChangeText={password => this.setState({ password })}
-                                value={this.state.password}
+                                onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                                value={this.state.confirmPassword}
+                                editable={this.state.editable}
                             />
                         </View>
                     </Row>
@@ -132,8 +165,8 @@ export default class InitialSignup extends React.Component {
                         </Content>
                     </Row>
                 </Grid>
-                <Button onPress={this.handleSignUp} style=
-                    {{
+                <Button onPress={this.handleSignUp}
+                    style={{
                         width: '100%',
                         height: '10%',
                         position: 'absolute',
@@ -143,7 +176,7 @@ export default class InitialSignup extends React.Component {
                         bottom: 0,
                     }}
                     success><Text style={{ fontSize: 30 }}> Register </Text></Button>
-            </React.Fragment>
+            </Root>
         )
     }
 }
