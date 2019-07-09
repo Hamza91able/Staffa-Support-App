@@ -28,34 +28,38 @@ export default class NearlyDoneScreen extends React.Component {
                         <Row size={2}>
 
                         </Row>
-                        <Row size={10}>
-                            <View style={{ alignItems: 'center', flex: 1 }}>
-                                <Text>Upload a profile photo</Text>
-                                <View style={{ alignItems: 'center', flex: 1, marginTop: '7%' }}>
-                                    <Body>
-                                        <Button
-                                            onPress={() => this.props.navigation.navigate('')}
-                                            style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
-                                            rounded><Text> Upload </Text>
-                                        </Button>
-                                    </Body>
-                                </View>
-                            </View>
-                        </Row>
-                        <Row size={10} style={{ width: '90%' }}>
-                            <Content>
-                                <Item style={{ paddingLeft: 30, paddingRight: 30 }} inlineLabel>
-                                    <Input
-                                        style={{ textAlign: 'center' }}
-                                        placeholder={'Short Bio'}
-                                    />
-                                </Item>
-                            </Content>
+                        <Row size={45}>
+                            <Grid>
+                                <Row>
+                                    <View style={{ alignItems: 'center', flex: 1 }}>
+                                        <Text>Upload a profile photo</Text>
+                                        <View style={{ alignItems: 'center', flex: 1, marginTop: '7%' }}>
+                                            <Body>
+                                                <Button
+                                                    style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
+                                                    rounded><Text> Upload </Text>
+                                                </Button>
+                                            </Body>
+                                        </View>
+                                    </View>
+                                </Row>
+                                <Row>
+                                    <Content>
+                                        <Item style={{ paddingLeft: 30, paddingRight: 30 }} inlineLabel>
+                                            <Input
+                                                style={{ textAlign: 'center', backgroundColor: 'white' }}
+                                                placeholder={'Short Bio'}
+                                            />
+                                        </Item>
+                                    </Content>
+                                </Row>
+                            </Grid>
+
                         </Row>
                         <Row size={2}>
 
                         </Row>
-                        <Row size={10} style={{ width: '90%' }}>
+                        <Row size={20} style={{ width: '90%' }}>
                             <Content>
                                 <View style={{ alignItems: 'center', flex: 1 }}>
                                     <Text>Distance prepared to travel</Text>

@@ -39,7 +39,7 @@ export default class Skills extends React.Component {
                         <Row size={2}>
 
                         </Row>
-                        <Row size={50}>
+                        <Row size={40}>
                             <Content>
                                 <ListItem onPress={this.handleNotification}>
                                     <Left>
@@ -171,7 +171,7 @@ export default class Skills extends React.Component {
                                 </ListItem>
                             </Content>
                         </Row>
-                        <Row size={5} style={{ width: '90%' }}>
+                        <Row size={10} style={{ width: '90%' }}>
                             <Content>
                                 <Label style={{ paddingLeft: 30, paddingRight: 30, color: '#FF6347' }} >Click on the title to upload of scan your certificate</Label>
                             </Content>
