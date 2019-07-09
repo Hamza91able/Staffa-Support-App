@@ -28,6 +28,7 @@ import InformationSharing from './src/screens/ProfileSetup/InformationSharing';
 import Notifications from './src/screens/ProfileSetup/Notifications';
 import VerificationStep1 from './src/screens/ProfileSetup/VerificationStep1';
 import VerificationStep2 from './src/screens/ProfileSetup/VerificationStep2';
+import DBS from './src/screens/ProfileSetup/DBS';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -81,6 +82,12 @@ const ProfileSetupStack = createStackNavigator({
     screen: VerificationStep2,
     navigationOptions: {
       headerTitle: 'Verification'
+    }
+  },
+  'DBS': {
+    screen: DBS,
+    navigationOptions: {
+      headerTitle: 'DBS'
     }
   }
 })

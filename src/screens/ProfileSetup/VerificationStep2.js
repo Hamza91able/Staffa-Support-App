@@ -116,11 +116,14 @@ export default class VerificationStep2 extends React.Component {
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Scan Document </Text>
                                     </Button> :
-                                        <Button
-                                            onPress={() => this.setState({ imgPath: undefined })}
-                                            style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
-                                            rounded><Text> Re scan document </Text>
-                                        </Button>}
+                                        <View>
+                                            <Button
+                                                onPress={() => this.props.navigation.navigate('DBS')}
+                                                style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
+                                                rounded><Text> NEXT </Text>
+                                            </Button>
+                                        </View>
+                                    }
                                 </Body>
                             </View>
                         </Row>
