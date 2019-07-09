@@ -36,10 +36,10 @@ export default class VerificationStep1 extends React.Component {
                                 }} >{this.state.verficationText}</Label>
                             </View>
                         </Row>
-                        <Row size={5}>
+                        <Row size={10}>
 
                         </Row>
-                        <Row size={65}>
+                        <Row size={60}>
                             <View style={{ alignItems: 'center', flex: 1 }}>
                                 <Body>
                                     <Button

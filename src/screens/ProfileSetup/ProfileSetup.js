@@ -166,19 +166,15 @@ export default class ProfileSetup extends React.Component {
 
                         </Row>
                         <Row size={15}>
-                            <Button style=
-                                {{
-                                    width: '100%',
-                                    height: '50%',
-                                    position: 'absolute',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    flex: 1,
-                                    bottom: 0,
-                                }}
-                                onPress={() => this.props.navigation.navigate('Address Bank Info')}
-                                success><Text style={{ fontSize: 30 }}> NEXT </Text>
-                            </Button>
+                            <View style={{ alignItems: 'center', flex: 1, marginTop: '5%' }}>
+                                <Body>
+                                    <Button
+                                        onPress={() => this.props.navigation.navigate('Address Bank Info')}
+                                        style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
+                                        rounded><Text> NEXT </Text>
+                                    </Button>
+                                </Body>
+                            </View>
                         </Row>
                     </Grid>
                 </View>
