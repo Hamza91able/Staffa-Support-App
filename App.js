@@ -194,8 +194,8 @@ const AppSwitchNavigator = createSwitchNavigator({
     screen: StackNavigator,
   },
   ProfileSetup: {
-    // screen: ProfileSetupStack
-    screen: Certificates
+    screen: ProfileSetupStack
+    // screen: Certificates
   }
 })
 
