@@ -1,11 +1,14 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import firebase from 'react-native-firebase';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, View, Content, Form, Item, Label, Input, Text, DatePicker, Picker, Radio, Card, CardItem, Root } from 'native-base';
+import {
+    Container, Header, Left, Body, Right, Button, Icon,
+    Title, View, Content, Form, Item, Label, Input, Text,
+    DatePicker, Picker, Radio, Card, CardItem, Root
+} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { ScrollView } from 'react-native-gesture-handler';
 
-export default class SignUp extends React.Component {
+export default class ProfileSetup extends React.Component {
     state = {
         username: '',
         password: '',
@@ -36,31 +39,6 @@ export default class SignUp extends React.Component {
         this.setState({
             holidayPay: value
         });
-    }
-
-    handleSignUp = () => {
-        const { username, password, firstName, surname, chosenDate, nic, email, mobileNo, regNumber, gender, holidayPay, errorMessage } = this.state;
-
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                const userRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
-                userRef.set({
-                    uid: firebase.auth().currentUser.uid,
-                    username: username,
-                    firstName: firstName,
-                    surname: surname,
-                    chosenDate: chosenDate,
-                    nic: nic,
-                    mobileNo: mobileNo,
-                    regNumber: regNumber,
-                    gender: gender,
-                    holidayPay: holidayPay,
-                })
-            })
-            .then(user => this.props.navigation.navigate('Main'))
-            .catch(error => this.setState({ errorMessage: error.message }))
     }
 
     renderSignup = () => {
@@ -174,7 +152,7 @@ export default class SignUp extends React.Component {
                                                 Staffa
                                         </Text>
                                             <Text>
-                                                New Account
+                                                Profile Setup
                                         </Text>
                                         </Body>
                                     </CardItem>
@@ -198,6 +176,7 @@ export default class SignUp extends React.Component {
                                     flex: 1,
                                     bottom: 0,
                                 }}
+                                onPress={() => this.props.navigation.navigate('Address Bank Info')}
                                 success><Text style={{ fontSize: 30 }}> NEXT </Text>
                             </Button>
                         </Row>

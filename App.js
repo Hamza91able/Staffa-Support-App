@@ -15,16 +15,45 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Loading from './src/screens/Loading';
 import Login from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
-import SignUp from './src/screens/SignUp';
 import InitialSignup from './src/screens/InitialSignup';
 import ViewShifts from './src/screens/ViewShifts';
 import ShiftDetails from './src/screens/ShiftDetails';
+import ProfileSetup from './src/screens/ProfileSetup/ProfileSetup';
+import AddressBankInfo from './src/screens/ProfileSetup/AddressBankInfo';
+import TermsConditions from './src/screens/ProfileSetup/TermsConditions';
+import PrivacyGPDR from './src/screens/ProfileSetup/PrivacyGDPR';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
-import firebase from 'react-native-firebase';
 
 let mainHeaderBool = undefined
+
+const ProfileSetupStack = createStackNavigator({
+  'Profile Setup': {
+    screen: ProfileSetup,
+    navigationOptions: {
+      headerTitle: 'Profile Setup'
+    }
+  },
+  'Address Bank Info': {
+    screen: AddressBankInfo,
+    navigationOptions: {
+      headerTitle: 'Address and Bank Info'
+    }
+  },
+  'Terms Conditions': {
+    screen: TermsConditions,
+    navigationOptions: {
+      headerTitle: 'Terms & Conditions'
+    }
+  },
+  'Privacy GPDR': {
+    screen: PrivacyGPDR,
+    navigationOptions: {
+      headerTitle: 'Privacy & GPDR'
+    }
+  }
+})
 
 const ShiftsStack = createStackNavigator({
   'View Shifts': {
@@ -113,8 +142,8 @@ const AppSwitchNavigator = createSwitchNavigator({
   Dashboard: {
     screen: StackNavigator,
   },
-  SignUpForm: {
-    screen: SignUp
+  ProfileSetup: {
+    screen: ProfileSetupStack
   }
 })
 
