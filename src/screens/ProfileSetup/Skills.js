@@ -180,7 +180,7 @@ export default class Skills extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1, marginTop: '3%' }}>
                                 <Body>
                                     <Button
-                                        onPress={() => this.props.navigation.navigate('')}
+                                        onPress={() => this.props.navigation.navigate('Nearly Done Screen')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Next </Text>
                                     </Button>
