@@ -87,7 +87,7 @@ export default class NearlyDoneScreen extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1 }}>
                                 <Body>
                                     <Button
-                                        onPress={() => this.props.navigation.navigate('Information Sharing')}
+                                        onPress={() => this.props.navigation.navigate('Final Screen')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Next </Text>
                                     </Button>

@@ -34,6 +34,7 @@ import Certificates from './src/screens/ProfileSetup/Certificates';
 import References from './src/screens/ProfileSetup/References';
 import Skills from './src/screens/ProfileSetup/Skills';
 import NearlyDoneScreen from './src/screens/ProfileSetup/NearlyDoneScreen';
+import FinalScreen from './src/screens/ProfileSetup/FinalScreen';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -123,6 +124,12 @@ const ProfileSetupStack = createStackNavigator({
     screen: NearlyDoneScreen,
     navigationOptions: {
       headerTitle: 'Nearly Done!'
+    }
+  },
+  'Final Screen': {
+    screen: FinalScreen,
+    navigationOptions: {
+      headerTitle: 'You are done !'
     }
   }
 })
@@ -216,7 +223,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   },
   ProfileSetup: {
     screen: ProfileSetupStack
-    // screen: NearlyDoneScreen,
+    // screen: FinalScreen,
   }
 })
 

@@ -9,7 +9,7 @@ export default class Loading extends React.Component {
         //     this.props.navigation.navigate(user ? 'Dashboard' : 'Login')
         //     // this.props.changeLoading()
         // })
-        this.props.navigation.navigate('ProfileSetup')
+        this.props.navigation.navigate('Login')
     }
 
     render() {
