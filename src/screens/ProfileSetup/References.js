@@ -128,7 +128,7 @@ export default class References extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1, marginTop: '5%' }}>
                                 <Body>
                                     <Button
-                                        onPress={() => this.props.navigation.navigate('Certificates')}
+                                        onPress={() => this.props.navigation.navigate('Skills')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Next </Text>
                                     </Button>

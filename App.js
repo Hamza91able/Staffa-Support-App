@@ -32,6 +32,7 @@ import DBS from './src/screens/ProfileSetup/DBS';
 import Qualifications from './src/screens/ProfileSetup/Qualifications';
 import Certificates from './src/screens/ProfileSetup/Certificates';
 import References from './src/screens/ProfileSetup/References';
+import Skills from './src/screens/ProfileSetup/Skills';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -109,6 +110,12 @@ const ProfileSetupStack = createStackNavigator({
     screen: References,
     navigationOptions: {
       headerTitle: 'References'
+    }
+  },
+  'Skills': {
+    screen: Skills,
+    navigationOptions: {
+      headerTitle: 'Skills'
     }
   }
 })
@@ -202,7 +209,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   },
   ProfileSetup: {
     screen: ProfileSetupStack
-    // screen: References
+    // screen: Skills
   }
 })
 
