@@ -73,18 +73,23 @@ export default class DBS extends React.Component {
                             </Content>
                         </Row>
                         <Row size={35}>
-                            <View style={{ alignItems: 'center', flex: 1 }}>
-                                <Body>
-                                    <Button
-                                        style={{ width: 250, justifyContent: 'center', backgroundColor: 'black' }}
-                                        rounded><Text> Scan DBS Certificate </Text>
-                                    </Button>
-                                    <Button
-                                        style={{ width: 250, justifyContent: 'center', backgroundColor: 'black', marginTop: '1%' }}
-                                        rounded><Text> Upload DBS Certificate </Text>
-                                    </Button>
-                                </Body>
-                            </View>
+                            {this.state.notificationOn ?
+                                <View style={{ alignItems: 'center', flex: 1 }}>
+                                    <Body>
+                                        <Button
+                                            style={{ width: 250, justifyContent: 'center', backgroundColor: 'black' }}
+                                            rounded><Text> Scan DBS Certificate </Text>
+                                        </Button>
+                                        <Button
+                                            style={{ width: 250, justifyContent: 'center', backgroundColor: 'black', marginTop: '1%' }}
+                                            rounded><Text> Upload DBS Certificate </Text>
+                                        </Button>
+                                    </Body>
+                                </View> :
+                                <View style={{ alignItems: 'center', flex: 1 }}>
+                                    <Text>Please obtain an up to date DBS certificate in order to complete registration</Text>
+                                </View>
+                            }
                         </Row>
                         <Row size={15}>
                             <View style={{ alignItems: 'center', flex: 1, marginTop: '5%' }}>
