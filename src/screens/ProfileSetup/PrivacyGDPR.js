@@ -43,6 +43,7 @@ export default class PrivacyGPDR extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1 }}>
                                 <Body>
                                     <Button
+                                        onPress={() => this.props.navigation.navigate('Information Sharing')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Agree </Text>
                                     </Button>

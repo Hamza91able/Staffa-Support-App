@@ -11,17 +11,22 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Screens
+// Main Screens
 import Loading from './src/screens/Loading';
 import Login from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
 import InitialSignup from './src/screens/InitialSignup';
 import ViewShifts from './src/screens/ViewShifts';
 import ShiftDetails from './src/screens/ShiftDetails';
+
+//Profile Setup Screens
 import ProfileSetup from './src/screens/ProfileSetup/ProfileSetup';
 import AddressBankInfo from './src/screens/ProfileSetup/AddressBankInfo';
 import TermsConditions from './src/screens/ProfileSetup/TermsConditions';
 import PrivacyGPDR from './src/screens/ProfileSetup/PrivacyGDPR';
+import InformationSharing from './src/screens/ProfileSetup/InformationSharing';
+import Notifications from './src/screens/ProfileSetup/Notifications';
+import VerificationStep1 from './src/screens/ProfileSetup/VerificationStep1';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -51,6 +56,24 @@ const ProfileSetupStack = createStackNavigator({
     screen: PrivacyGPDR,
     navigationOptions: {
       headerTitle: 'Privacy & GPDR'
+    }
+  },
+  'Information Sharing': {
+    screen: InformationSharing,
+    navigationOptions: {
+      headerTitle: 'Information Sharing'
+    }
+  },
+  'Notifications': {
+    screen: Notifications,
+    navigationOptions: {
+      headerTitle: 'Notifcations'
+    }
+  },
+  'Verification Step 1': {
+    screen: VerificationStep1,
+    navigationOptions: {
+      headerTitle: 'Verification'
     }
   }
 })
