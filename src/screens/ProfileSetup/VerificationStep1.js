@@ -43,6 +43,7 @@ export default class VerificationStep1 extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1 }}>
                                 <Body>
                                     <Button
+                                        onPress={() => this.props.navigation.navigate('Verification Step 2')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> Begin ID Proccess </Text>
                                     </Button>

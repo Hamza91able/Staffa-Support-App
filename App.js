@@ -27,6 +27,7 @@ import PrivacyGPDR from './src/screens/ProfileSetup/PrivacyGDPR';
 import InformationSharing from './src/screens/ProfileSetup/InformationSharing';
 import Notifications from './src/screens/ProfileSetup/Notifications';
 import VerificationStep1 from './src/screens/ProfileSetup/VerificationStep1';
+import VerificationStep2 from './src/screens/ProfileSetup/VerificationStep2';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -72,6 +73,12 @@ const ProfileSetupStack = createStackNavigator({
   },
   'Verification Step 1': {
     screen: VerificationStep1,
+    navigationOptions: {
+      headerTitle: 'Verification'
+    }
+  },
+  'Verification Step 2': {
+    screen: VerificationStep2,
     navigationOptions: {
       headerTitle: 'Verification'
     }
@@ -167,6 +174,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   },
   ProfileSetup: {
     screen: ProfileSetupStack
+    // screen: VerificationStep2
   }
 })
 
