@@ -11,7 +11,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 export default class DBS extends React.Component {
 
     state = {
-        informationSharingText: 'We sometimes share data with our partners for the purpose of offering unique and special deals just to you. You can opt-in and out of these at will. We never share your details without your express consent and permission. You can change these settings at any time inside the app ',
+        verficationText: 'Do you have a current valid DBS certificate that is no more than 2 years old?',
         notificationOn: true,
         notificationOff: false,
     }
@@ -19,12 +19,12 @@ export default class DBS extends React.Component {
     handleNotification = () => {
         this.setState({
             notificationOn: !this.state.notificationOn,
-            notificationOff: !this.state.notificationOff
+            notificationOff: !this.state.notificationOff,
         })
     }
 
+
     render() {
-        // alert(this.state.anonomalisedCheck)
         return (
             <Root>
                 <View style={{ backgroundColor: '#FFA500', flex: 1, alignItems: 'center' }}>
@@ -32,40 +32,66 @@ export default class DBS extends React.Component {
                         <Row size={5}>
 
                         </Row>
-                        <Row size={25} style={{ backgroundColor: 'white', width: '90%' }}>
+                        <Row size={25} style={{ width: '90%' }}>
+                            <View style={{
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Label style={{
+                                    paddingLeft: 30, paddingRight: 30,
+                                    textAlign: 'center',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }} >{this.state.verficationText}</Label>
+                            </View>
+                        </Row>
+                        <Row size={20}>
                             <Content>
-                                <Label style={{ paddingLeft: 30, paddingRight: 30 }} >{this.state.informationSharingText}</Label>
+                                <Grid>
+                                    <Col>
+                                        <ListItem onPress={this.handleNotification}>
+                                            <Left>
+                                                <Text>Yes</Text>
+                                            </Left>
+                                            <Right>
+                                                <CheckBox onPress={this.handleNotification} checked={this.state.notificationOn} />
+                                            </Right>
+                                        </ListItem>
+                                    </Col>
+                                    <Col>
+                                        <ListItem onPress={this.handleNotification}>
+                                            <Left>
+                                                <Text>No</Text>
+                                            </Left>
+                                            <Right>
+                                                <CheckBox onPress={this.handleNotification} checked={this.state.notificationOff} />
+                                            </Right>
+                                        </ListItem>
+                                    </Col>
+                                </Grid>
                             </Content>
                         </Row>
-                        <Row size={5}>
-
-                        </Row>
-                        <Row size={45}>
-                            <Content>
-                                <ListItem onPress={this.handleNotification}>
-                                    <Left>
-                                        <Text>Notifications On</Text>
-                                    </Left>
-                                    <Right>
-                                        <CheckBox onPress={this.handleNotification} checked={this.state.notificationOn} />
-                                    </Right>
-                                </ListItem>
-                                <ListItem onPress={this.handleNotification}>
-                                    <Left>
-                                        <Text>Notifications Off</Text>
-                                    </Left>
-                                    <Right>
-                                        <CheckBox onPress={this.handleNotification} checked={this.state.notificationOff} />
-                                    </Right>
-                                </ListItem>
-                            </Content>
-                        </Row>
-                        <Row size={12}>
+                        <Row size={35}>
                             <View style={{ alignItems: 'center', flex: 1 }}>
                                 <Body>
                                     <Button
+                                        style={{ width: 250, justifyContent: 'center', backgroundColor: 'black' }}
+                                        rounded><Text> Scan DBS Certificate </Text>
+                                    </Button>
+                                    <Button
+                                        style={{ width: 250, justifyContent: 'center', backgroundColor: 'black', marginTop: '1%' }}
+                                        rounded><Text> Upload DBS Certificate </Text>
+                                    </Button>
+                                </Body>
+                            </View>
+                        </Row>
+                        <Row size={15}>
+                            <View style={{ alignItems: 'center', flex: 1, marginTop: '5%' }}>
+                                <Body>
+                                    <Button
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
-                                        rounded><Text> Next </Text>
+                                        rounded><Text> NEXT </Text>
                                     </Button>
                                 </Body>
                             </View>
@@ -74,7 +100,7 @@ export default class DBS extends React.Component {
                 </View>
 
 
-            </Root>
+            </Root >
 
         )
     }

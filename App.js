@@ -181,7 +181,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   },
   ProfileSetup: {
     screen: ProfileSetupStack
-    // screen: VerificationStep2
+    // screen: DBS
   }
 })
 
