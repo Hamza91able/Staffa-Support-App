@@ -31,6 +31,7 @@ import VerificationStep2 from './src/screens/ProfileSetup/VerificationStep2';
 import DBS from './src/screens/ProfileSetup/DBS';
 import Qualifications from './src/screens/ProfileSetup/Qualifications';
 import Certificates from './src/screens/ProfileSetup/Certificates';
+import References from './src/screens/ProfileSetup/References';
 
 // Components
 import drawerContentComponent from './src/components/DrawerContentComponents';
@@ -102,6 +103,12 @@ const ProfileSetupStack = createStackNavigator({
     screen: Certificates,
     navigationOptions: {
       headerTitle: 'Certificates'
+    }
+  },
+  'References': {
+    screen: References,
+    navigationOptions: {
+      headerTitle: 'References'
     }
   }
 })
@@ -195,7 +202,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   },
   ProfileSetup: {
     screen: ProfileSetupStack
-    // screen: Certificates
+    // screen: References
   }
 })
 
