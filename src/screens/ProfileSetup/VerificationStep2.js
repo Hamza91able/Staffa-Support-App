@@ -98,14 +98,16 @@ export default class VerificationStep2 extends React.Component {
                                 }}
                             >
                             </RNCamera> :
-                                <Image
-                                    source={{
-                                        isStatic: true,
+                                <View style={{ alignItems: 'center', flex: 1 }}>
+                                    <Image
+                                        source={{
+                                            isStatic: true,
 
-                                        uri: this.state.imgPath.uri,
-                                    }}
-                                    style={{ height: '100%', width: '100%' }}
-                                />
+                                            uri: this.state.imgPath.uri,
+                                        }}
+                                        style={{ height: '100%', width: '100%' }}
+                                    />
+                                </View>
                             }
                         </Row>
                         <Row size={15}>
