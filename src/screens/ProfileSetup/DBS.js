@@ -95,6 +95,7 @@ export default class DBS extends React.Component {
                             <View style={{ alignItems: 'center', flex: 1, marginTop: '5%' }}>
                                 <Body>
                                     <Button
+                                        onPress={() => this.props.navigation.navigate('Qualifications')}
                                         style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                         rounded><Text> NEXT </Text>
                                     </Button>
