@@ -27,7 +27,7 @@ export default class FinalScreen extends React.Component {
                     <View style={{ flex: 1 }}>
                         <Body>
                             <Button
-                                onPress={() => this.props.navigation.navigate('Main')}
+                                onPress={() => this.props.navigation.navigate('Dashboard')}
                                 style={{ width: 180, justifyContent: 'center', backgroundColor: 'black' }}
                                 rounded><Text> Next </Text>
                             </Button>
